@@ -27,7 +27,7 @@ public class Page {
     public boolean setRegister(String text) {
         int size = this.register.size();
 
-        if (size <= this.maxSize) {
+        if (size < this.maxSize) {
             register.add(text);
             return true;
         } else {

@@ -3,10 +3,50 @@ package com.br.model;
 public class Configuration {
     static private int pageSize;
     static private int bucketSize;
+    static private int colisionCount;
+    static private int overflowCount;
 
-    public Configuration(int pageSize, int bucketSize) {
+    static class Builder {
+        private int pageSize = 0;
+        private int bucketSize = 0;
+        private int colisionCount = 0;
+        private int overflowCount = 0;
+
+        public Builder setPageSize(int pageSize) {
+            this.pageSize = pageSize;
+            return this;
+        }
+
+        public Builder setBucketSize(int bucketSize) {
+            this.bucketSize = bucketSize;
+            return this;
+        }
+
+        public Builder setColisionCount(int colisionCount) {
+            this.colisionCount = colisionCount;
+            return this;
+        }
+
+        public Builder setOverflowCount(int overflowCount) {
+            this.overflowCount = overflowCount;
+            return this;
+        }
+
+        public Configuration build() {
+            return new Configuration(this);
+        }
+    }
+
+    public Configuration(int pageSize, int bucketSize, int colisionCount, int overflowCount) {
         Configuration.pageSize = pageSize;
         Configuration.bucketSize = bucketSize;
+        Configuration.colisionCount = colisionCount;
+        Configuration.overflowCount = overflowCount;
+    }
+
+    public Configuration(Builder builder) {
+        Configuration.pageSize = builder.pageSize;
+        Configuration.bucketSize = builder.bucketSize;
     }
 
     public static int getPageSize() {
@@ -23,5 +63,29 @@ public class Configuration {
 
     public static void setBucketSize(int bucketSize) {
         Configuration.bucketSize = bucketSize;
+    }
+
+    public static int getColisionCount() {
+        return colisionCount;
+    }
+
+    public static void setColisionCount(int colisionCount) {
+        Configuration.colisionCount = colisionCount;
+    }
+
+    public static void incrementColisionCount() {
+        Configuration.colisionCount++;
+    }
+
+    public static int getOverflowCount() {
+        return overflowCount;
+    }
+
+    public static void setOverflowCount(int overflowCount) {
+        Configuration.overflowCount = overflowCount;
+    }
+
+    public static void incrementOverflowCount() {
+        Configuration.overflowCount++;
     }
 }

@@ -8,13 +8,11 @@ import java.util.Map;
 
 public class Database {
     private ArrayList<Table> tables;
-    private ArrayList<Integer> buckets;
-    private int maxSizePage;
+    private Map<Integer, Bucket> buckets;
 
-    public Database(int maxSizePage) {
+    public Database() {
         this.tables = new ArrayList<>();
-        this.buckets = new ArrayList<>();
-        this.maxSizePage = maxSizePage;
+        this.buckets = new HashMap<>();
     }
 
     public ArrayList<Table> getTables() {
@@ -26,7 +24,7 @@ public class Database {
     }
 
     public void readTable(String path) throws FileNotFoundException, UnsupportedEncodingException {
-        Table table = new Table(maxSizePage);
+        Table table = new Table();
         table.fillPages(path, buckets);
         this.tables.add(table);
     }
