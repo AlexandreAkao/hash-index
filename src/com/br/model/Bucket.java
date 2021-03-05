@@ -1,5 +1,7 @@
 package com.br.model;
 
+import java.util.ArrayList;
+
 public class Bucket {
     private Page[] pages;
     private int size;
@@ -8,6 +10,28 @@ public class Bucket {
     public Bucket(int bucketSize) {
         this.pages = new Page[bucketSize];
         this.size = 0;
+    }
+
+    public int getReg(String name) {
+        Bucket currentBucket = this;
+        int cost = 0;
+
+        while (currentBucket != null) {
+            for (int i = 0; i < size; i++) {
+                ArrayList<String> registerList = currentBucket.pages[i].getRegister();
+
+                for (String register : registerList) {
+                    if (register.equals(name)) {
+                        return cost;
+                    } else {
+                        cost++;
+                    }
+                }
+            }
+            currentBucket = currentBucket.nextBucket;
+        }
+
+        return cost;
     }
 
     public Bucket getNextBucket() {

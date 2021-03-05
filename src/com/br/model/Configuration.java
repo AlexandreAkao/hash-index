@@ -6,7 +6,7 @@ public class Configuration {
     static private int colisionCount;
     static private int overflowCount;
 
-    static class Builder {
+    public static class Builder {
         private int pageSize = 0;
         private int bucketSize = 0;
         private int colisionCount = 0;

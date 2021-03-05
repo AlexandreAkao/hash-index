@@ -24,7 +24,7 @@ public class Database {
     }
 
     public void readTable(String path) throws FileNotFoundException, UnsupportedEncodingException {
-        Table table = new Table();
+        Table table = new Table(this.buckets);
         table.fillPages(path, buckets);
         this.tables.add(table);
     }

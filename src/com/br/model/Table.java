@@ -8,12 +8,22 @@ import java.util.ArrayList;
 import java.util.Map;
 
 public class Table {
-    ArrayList<Tupla> tuplas = new ArrayList<>();
-    Page firstPage;
+    private ArrayList<Tupla> tuplas = new ArrayList<>();
+    private Page firstPage;
+    private Map<Integer, Bucket> buckets;
 
-    public Table() {
+    public Table(Map<Integer, Bucket> buckets) {
+        this.buckets = buckets;
         int maxSizePage = Configuration.getPageSize();
         this.firstPage = new Page(maxSizePage);
+    }
+
+    public int getName(String name) {
+        int hash = Util.FHash6(name);
+
+        Bucket bucket = buckets.get(hash);
+
+        return bucket.getReg(name);
     }
 
     public void fillPages(
