@@ -25,6 +25,9 @@ public class Database {
     }
 
     public void readTable(String path) throws FileNotFoundException, UnsupportedEncodingException {
+        Configuration.resetValues();
+        buckets.clear();
+        
         Table table = new Table(this.buckets);
         table.fillPages(path, buckets);
         this.table = table;
@@ -32,6 +35,7 @@ public class Database {
 
     public void readTable(BufferedReader br) {
         Configuration.resetValues();
+        buckets.clear();
 
         Table table = new Table(this.buckets);
         table.fillPages(br, buckets);
