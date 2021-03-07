@@ -13,6 +13,7 @@ import java.util.Map;
 @RequestMapping("/configuration")
 public class ConfigurationController {
 
+    @CrossOrigin
     @PostMapping
     public ResponseEntity create(@RequestBody RequestConfiguration requestConfiguration) {
         Configuration.setPageSize(requestConfiguration.getPageSize());
@@ -25,6 +26,7 @@ public class ConfigurationController {
         return ResponseEntity.status(HttpStatus.CREATED).body(res);
     }
 
+    @CrossOrigin
     @GetMapping
     public ResponseEntity show() {
         Map<String, Object> res = new LinkedHashMap<>();

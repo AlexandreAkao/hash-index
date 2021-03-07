@@ -15,6 +15,7 @@ import java.util.Map;
 @RequestMapping("/table")
 public class TableController {
 
+    @CrossOrigin
     @PostMapping
     public ResponseEntity create(@RequestParam("file") MultipartFile file) throws IOException {
         if (Configuration.getPageSize() == 0 || Configuration.getBucketSize() == 0) {
@@ -45,11 +46,18 @@ public class TableController {
         }
     }
 
+    @CrossOrigin
     @GetMapping
     public ResponseEntity show() {
         Database database = Configuration.getDatabase();
-
+        Table table = database.getTable();
         Map<String, Object> res = new LinkedHashMap<>();
+
+        if (table == null) {
+            res.put("erro", "no table found");
+            return ResponseEntity.status(404).body(res);
+        }
+
         res.put(
             "readSize",
             database.getTable().getTuplas().size()
@@ -62,6 +70,7 @@ public class TableController {
         return ResponseEntity.status(200).body(res);
     }
 
+    @CrossOrigin
     @GetMapping("/search")
     public ResponseEntity searchReg(@RequestParam(value = "search") String search) {
         Database database = Configuration.getDatabase();

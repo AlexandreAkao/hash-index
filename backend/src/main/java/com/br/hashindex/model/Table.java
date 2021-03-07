@@ -28,6 +28,10 @@ public class Table {
 
         Bucket bucket = buckets.get(hash);
 
+        if (bucket == null) {
+            return -1;
+        }
+
         return bucket.getReg(name);
     }
 

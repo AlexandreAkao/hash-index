@@ -31,8 +31,11 @@ public class Database {
     }
 
     public void readTable(BufferedReader br) {
+        Configuration.resetValues();
+
         Table table = new Table(this.buckets);
         table.fillPages(br, buckets);
+
         this.table = table;
     }
 }

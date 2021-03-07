@@ -64,6 +64,11 @@ public class Configuration {
 
     }
 
+    public static void resetValues() {
+        Configuration.colisionCount = 0;
+        Configuration.overflowCount = 0;
+    }
+
     public static int getPageSize() {
         return pageSize;
     }

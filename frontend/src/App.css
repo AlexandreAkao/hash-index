@@ -1,0 +1,127 @@
+:root {
+  --white: #fafafa;
+  --dark: #1d1d1d;
+}
+
+.App {
+  min-height: 100%;
+  height: 100%;
+  display: flex;
+}
+
+.container {
+  background-color: #fafafa;
+
+  width: 95%;
+  margin: auto;
+  border-radius: 20px;
+  box-shadow: 1px 3px 15px 3px rgba(29, 29, 29, 0.5);
+}
+
+.config-container {
+  display: flex;
+}
+
+.config-container input {
+  height: 2rem;
+  width: 6rem;
+  font-size: 2rem;
+  border: 2px solid rgba(29, 29, 29);
+  border-radius: 5px;
+  text-align-last: center;
+}
+
+.config-container {
+  margin-top: 2rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  padding-bottom: 2rem;
+  border-bottom: 1px solid rgba(29, 29, 29, 0.3);
+}
+
+.config-container-inputs {
+  display: flex;
+}
+
+.config-container-inputs > div {
+  margin: 0 1rem;
+  text-align: center;
+  display: flex;
+  align-items: center;
+}
+
+.config-container-inputs label {
+  font-size: 1.3rem;
+  margin-right: 1rem;
+}
+
+.config-save-btn {
+  margin-top: 1.5rem;
+  background-color: #1d1d1d;
+  color: #fafafa;
+  font-size: 1.3rem;
+  padding: 0 2rem;
+  letter-spacing: 0.1em;
+  cursor: pointer;
+  line-height: 45px;
+  text-decoration: none;
+  text-transform: uppercase;
+  transition: .4s ease all;
+  border-radius: 40px;
+}
+
+.config-save-btn:hover {
+  background-color: #fafafa;
+  color: #1d1d1d;
+  box-shadow: inset 0px 0px 0px 4px #1d1d1d;
+  transition: .4s ease all;
+}
+
+.search-container {
+  margin-top: 1rem;
+  display: flex;
+  justify-content: center;
+}
+
+.search-input-btn {
+  background-color: #fafafa;
+  margin: 0;
+  width: 50%;
+  height: 40px;
+  border-radius: 10px 0 0 10px;
+  padding: 1rem;
+  font-size: 1.5rem;
+  border: 2px solid #1d1d1d ;
+}
+
+.search-submit-btn {
+	cursor: pointer;
+  text-transform: uppercase;
+	border-radius: 0 10px 10px 0;
+  padding: 0 1.5rem;
+  color: white;
+  font-size: 1rem;
+  font-weight: 500;
+  background-color: #1d1d1d;
+  letter-spacing: .2rem;
+  display: flex;
+  align-items: center;
+  transition: .4s ease all;
+}
+
+.search-submit-btn:hover {
+  background-color: #fafafa;
+  color: #1d1d1d;
+  box-shadow: inset 0px 0px 0px 2px #1d1d1d;
+  transition: .4s ease all;
+}
+
+.database-info {
+  padding: 0 4rem;
+  display: flex;
+  flex-wrap: wrap;
+  margin-top: 2rem;
+  justify-content: space-evenly;
+}
