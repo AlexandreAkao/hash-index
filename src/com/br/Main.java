@@ -10,8 +10,8 @@ public class Main {
     public static void main(String[] args) {
 
         String path = "test.txt";
-        int pageSize = 4;
-        int bucketSize = 2;
+        int pageSize = 1;
+        int bucketSize = 10;
 
         new Configuration.Builder()
             .setPageSize(pageSize)

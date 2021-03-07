@@ -37,6 +37,8 @@ public class Configuration {
         }
     }
 
+    public Configuration() {}
+
     public Configuration(int pageSize, int bucketSize, int colisionCount, int overflowCount) {
         Configuration.pageSize = pageSize;
         Configuration.bucketSize = bucketSize;
@@ -47,6 +49,11 @@ public class Configuration {
     public Configuration(Builder builder) {
         Configuration.pageSize = builder.pageSize;
         Configuration.bucketSize = builder.bucketSize;
+    }
+
+    public static void resetValues() {
+        Configuration.colisionCount = 0;
+        Configuration.overflowCount = 0;
     }
 
     public static int getPageSize() {
@@ -87,5 +94,15 @@ public class Configuration {
 
     public static void incrementOverflowCount() {
         Configuration.overflowCount++;
+    }
+
+    @Override
+    public String toString() {
+        return "Configuration {" +
+                "\npageSize = " + Configuration.pageSize +
+                "\nbucketSize = " + Configuration.bucketSize +
+                "\ncolisionCount = " + Configuration.colisionCount +
+                "\noverflowCount = " + Configuration.overflowCount +
+                "\n}";
     }
 }
