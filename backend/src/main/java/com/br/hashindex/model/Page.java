@@ -3,13 +3,14 @@ package com.br.hashindex.model;
 import java.util.ArrayList;
 
 public class Page {
-    private ArrayList<String> register;
+    private ArrayList<Tupla> register;
     private int maxSize;
     private Page nextPage;
 
     public Page(int maxSize) {
         this.register = new ArrayList<>();
         this.maxSize = maxSize;
+        this.nextPage = null;
     }
 
     public Page getNextPage() {
@@ -20,7 +21,7 @@ public class Page {
         this.nextPage = nextPage;
     }
 
-    public ArrayList<String> getRegister() {
+    public ArrayList<Tupla> getRegister() {
         return register;
     }
 
@@ -29,7 +30,9 @@ public class Page {
         int size = this.register.size();
 
         if (size < this.maxSize) {
-            register.add(text);
+            Tupla tupla = new Tupla(text);
+
+            register.add(tupla);
             return true;
         } else {
             Page newPage = new Page(maxSize);

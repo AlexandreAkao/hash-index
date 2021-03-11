@@ -17,14 +17,14 @@ public class Bucket {
         int cost = 0;
 
         while (currentBucket != null) {
-            for (int i = 0; i < size; i++) {
-                ArrayList<String> registerList = currentBucket.pages[i].getRegister();
 
-                for (String register : registerList) {
-                    if (register.equals(name)) {
+            for (int i = 0; i < size; i++) {
+                ArrayList<Tupla> registerList = currentBucket.pages[i].getRegister();
+                cost++;
+
+                for (Tupla register : registerList) {
+                    if (register.getName().equals(name)) {
                         return cost;
-                    } else {
-                        cost++;
                     }
                 }
             }

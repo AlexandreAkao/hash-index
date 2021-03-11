@@ -1,12 +1,11 @@
 package com.br.hashindex.model;
 
-import javax.xml.crypto.Data;
-
 public class Configuration {
     static private int pageSize;
     static private int bucketSize;
     static private int colisionCount;
     static private int overflowCount;
+    static private int bucketNumber;
     static private Database database;
 
     public static class Builder {
@@ -14,6 +13,7 @@ public class Configuration {
         private int bucketSize = 0;
         private int colisionCount = 0;
         private int overflowCount = 0;
+        private int bucketNumber = 0;
         private Database database = null;
 
         public Builder setPageSize(int pageSize) {
@@ -36,6 +36,11 @@ public class Configuration {
             return this;
         }
 
+        public Builder setDatabase(int bucketNumber) {
+            this.bucketNumber = bucketNumber;
+            return this;
+        }
+
         public Builder setDatabase(Database database) {
             this.database = database;
             return this;
@@ -48,11 +53,12 @@ public class Configuration {
 
     public Configuration() {}
 
-    public Configuration(int pageSize, int bucketSize, int colisionCount, int overflowCount) {
+    public Configuration(int pageSize, int bucketSize, int colisionCount, int overflowCount, int bucketNumber) {
         Configuration.pageSize = pageSize;
         Configuration.bucketSize = bucketSize;
         Configuration.colisionCount = colisionCount;
         Configuration.overflowCount = overflowCount;
+        Configuration.bucketNumber = bucketNumber;
     }
 
     public Configuration(Builder builder) {
@@ -60,6 +66,7 @@ public class Configuration {
         Configuration.bucketSize = builder.bucketSize;
         Configuration.colisionCount = builder.colisionCount;
         Configuration.overflowCount = builder.overflowCount;
+        Configuration.bucketNumber = builder.bucketNumber;
         Configuration.database = builder.database;
 
     }
@@ -67,6 +74,7 @@ public class Configuration {
     public static void resetValues() {
         Configuration.colisionCount = 0;
         Configuration.overflowCount = 0;
+        Configuration.bucketNumber = 0;
     }
 
     public static int getPageSize() {
@@ -109,6 +117,14 @@ public class Configuration {
         Configuration.overflowCount++;
     }
 
+    public static void incrementBucketNumber() {
+        Configuration.bucketNumber++;
+    }
+
+    public static int getBucketNumber() {
+        return bucketNumber;
+    }
+
     public static Database getDatabase() {
         return database;
     }
@@ -116,4 +132,6 @@ public class Configuration {
     public static void setDatabase(Database database) {
         Configuration.database = database;
     }
+
+
 }

@@ -41,6 +41,7 @@ public class TableController {
             res.put("bucketSize", Configuration.getBucketSize());
             res.put("colisionCount", Configuration.getColisionCount());
             res.put("overflowCount", Configuration.getOverflowCount());
+            res.put("bucketNumber", Configuration.getBucketNumber());
 
             return ResponseEntity.status(201).body(res);
         }
@@ -66,6 +67,7 @@ public class TableController {
         res.put("bucketSize", Configuration.getBucketSize());
         res.put("colisionCount", Configuration.getColisionCount());
         res.put("overflowCount", Configuration.getOverflowCount());
+        res.put("bucketNumber", Configuration.getBucketNumber());
 
         return ResponseEntity.status(200).body(res);
     }

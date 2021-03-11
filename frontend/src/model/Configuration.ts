@@ -5,4 +5,5 @@ export interface IConfiguration {
   colisionCount: number;
   overflowCount: number;
   cost: number;
+  bucketNumber: number;
 }

@@ -12,8 +12,8 @@ public class HashIndexApplication {
 		Database database = new Database();
 
 		new Configuration.Builder()
-				.setPageSize(0)
-				.setBucketSize(0)
+				.setPageSize(1)
+				.setBucketSize(2)
 				.setColisionCount(0)
 				.setOverflowCount(0)
 				.setDatabase(database)

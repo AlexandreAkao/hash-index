@@ -3,7 +3,6 @@ package com.br.hashindex.model;
 import java.io.BufferedReader;
 import java.io.FileNotFoundException;
 import java.io.UnsupportedEncodingException;
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -29,7 +28,8 @@ public class Database {
         buckets.clear();
         
         Table table = new Table(this.buckets);
-        table.fillPages(path, buckets);
+        table.fillPages(path);
+        table.hashGenerator(buckets);
         this.table = table;
     }
 
@@ -38,8 +38,8 @@ public class Database {
         buckets.clear();
 
         Table table = new Table(this.buckets);
-        table.fillPages(br, buckets);
-
+        table.fillPages(br);
+        table.hashGenerator(buckets);
         this.table = table;
     }
 }

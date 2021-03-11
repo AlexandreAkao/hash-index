@@ -22,6 +22,7 @@ function App() {
     colisionCount: 0,
     overflowCount: 0,
     cost: 0,
+    bucketNumber: 0,
 })
   
   useEffect(() => {
@@ -31,7 +32,8 @@ function App() {
         pageSize,
         colisionCount,
         overflowCount,
-        readSize
+        readSize,
+        bucketNumber
       } = data.data
 
       setInfo(prev => ({
@@ -40,11 +42,25 @@ function App() {
         bucketSize,
         colisionCount,
         overflowCount,
-        readSize
+        readSize,
+        bucketNumber
       }))
 
       setPageSize(pageSize);
       setBucketSize(bucketSize);
+    }).catch(_ => {
+      api.get<Pick<IConfiguration, 'pageSize' | 'bucketSize'>>('configuration').then(data => {
+        const { bucketSize, pageSize } = data.data;
+
+        setInfo(prev => ({
+          ...prev, 
+          pageSize,
+          bucketSize,
+        }))
+  
+        setPageSize(pageSize);
+        setBucketSize(bucketSize);
+      })
     })
   }, [])
 
@@ -85,7 +101,14 @@ function App() {
     formData.append('file', file);
 
     api.post<Omit<IConfiguration, 'cost'>>('table', formData).then(data => {
-      const { bucketSize, pageSize, readSize, colisionCount, overflowCount } = data.data;
+      const { 
+        bucketSize, 
+        pageSize, 
+        readSize, 
+        colisionCount, 
+        overflowCount, 
+        bucketNumber 
+      } = data.data;
 
       setInfo(prev => ({
         ...prev, 
@@ -93,7 +116,8 @@ function App() {
         bucketSize,
         readSize,
         colisionCount,
-        overflowCount
+        overflowCount,
+        bucketNumber
       }));
 
       toast.success('Tabela lida com sucesso', toastConfig)
@@ -167,6 +191,7 @@ function App() {
           <InfoNumber title="Número de overflows" number={info.overflowCount} />
           <InfoNumber title="Quantidade de registros" number={info.readSize} />
           <InfoNumber title="Custo da leitura" number={info.cost} />
+          <InfoNumber title="Quantidade de buckets" number={info.bucketNumber} />
         </div>
       </section>
     </div>
