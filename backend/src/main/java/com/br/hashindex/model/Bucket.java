@@ -18,7 +18,7 @@ public class Bucket {
 
         while (currentBucket != null) {
 
-            for (int i = 0; i < size; i++) {
+            for (int i = 0; i < currentBucket.size; i++) {
                 ArrayList<Tupla> registerList = currentBucket.pages[i].getRegister();
                 cost++;
 
@@ -31,7 +31,7 @@ public class Bucket {
             currentBucket = currentBucket.nextBucket;
         }
 
-        return cost;
+        return -1;
     }
 
     public Bucket getNextBucket() {
